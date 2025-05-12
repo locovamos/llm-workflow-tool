@@ -44,8 +44,12 @@ def chat(message, history):
               \nHere are the two answers: \n Here is the first one: \n {got_1} and here is the second one: \n {got_2} """}]
     best_response = openai.chat.completions.create(
         model='gpt-4o-mini',
-        messages=judge
+        messages=judge,
+        stream=True
     )
-    return best_response.choices[0].message.content
+    response =""
+    for chunk in best_response:
+        response += chunk.choices[0].delta.content or ''
+        yield response
 
 gr.ChatInterface(chat, type="messages").launch()
