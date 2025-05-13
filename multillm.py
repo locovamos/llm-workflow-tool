@@ -52,4 +52,13 @@ def chat(message, history):
         response += chunk.choices[0].delta.content or ''
         yield response
 
-gr.ChatInterface(chat, type="messages").launch()
+# Force dark mode
+
+js = """function () {
+  gradioURL = window.location.href
+  if (!gradioURL.endsWith('?__theme=dark')) {
+    window.location.replace(gradioURL + '?__theme=dark');
+  }
+}"""
+
+gr.ChatInterface(chat, type="messages",show_progress="full", js=js).launch()
