@@ -2,6 +2,8 @@ from dotenv import load_dotenv
 from openai import OpenAI
 import gradio as gr
 import os
+from pydantic import BaseModel
+import json
 
 load_dotenv(override=True)
 
@@ -11,6 +13,11 @@ deepseek_api_key = os.getenv('DEEPSEEK_API_KEY')
 
 system_prompt = "You are a helpful medical assistant, you'll give precise an answer but easy and very short" \
 " to understand so that any patient could understand the answer"
+
+class Export(BaseModel):
+    topic: str
+    summary: str
+
 
 
 gemini = OpenAI(
@@ -47,6 +54,18 @@ def chat(message, history):
         messages=judge,
         stream=True
     )
+    summary_deepseek = gemini.beta.chat.completions.parse(
+        model="gemini-2.0-flash",
+        messages=[{"role" : "user", "content":  f"""Give me the topic name and a summary of this text: {got_1}"""}],
+        response_format=Export
+    )
+    summary_gemini = gemini.beta.chat.completions.parse(
+        model="gemini-2.0-flash",
+        messages=[{"role" : "user", "content":  f"""Give me the topic name and a summary of this text: {got_2}"""}],
+        response_format=Export
+    )
+    with open("worflow_logs.json", "w") as f:
+        json.dump([summary_deepseek.choices[0].message.parsed.model_dump(),summary_gemini.choices[0].message.parsed.model_dump()],f, indent=2)
     response =""
     for chunk in best_response:
         response += chunk.choices[0].delta.content or ''
