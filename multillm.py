@@ -18,8 +18,6 @@ class Export(BaseModel):
     topic: str
     summary: str
 
-
-
 gemini = OpenAI(
     api_key=google_api_key,
     base_url="https://generativelanguage.googleapis.com/v1beta/openai/"
@@ -31,7 +29,6 @@ deepseek = OpenAI(
 )
 
 openai = OpenAI()
-
 
 def chat(message, history):
     messages = [{"role" : "system", "content": system_prompt}] + history + [{"role" : "user", "content": message}]
@@ -64,6 +61,8 @@ def chat(message, history):
         messages=[{"role" : "user", "content":  f"""Give me the topic name and a summary of this text: {got_2}"""}],
         response_format=Export
     )
+    
+    # Prompt logging before judgement
     with open("worflow_logs.json", "w") as f:
         json.dump([summary_deepseek.choices[0].message.parsed.model_dump(),summary_gemini.choices[0].message.parsed.model_dump()],f, indent=2)
     response =""
