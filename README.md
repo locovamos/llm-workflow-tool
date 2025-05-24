@@ -89,19 +89,18 @@ Ask the bot:
 
 Get a short, clear, and patient-friendly answer like:
 
-> *Common symptoms of diabetes include:
-
-- Increased thirst
-- Frequent urination
-- Extreme hunger
-- Unexplained weight loss
-- Fatigue
-- Blurry vision
-- Slow-healing cuts or infections
-- Tingling or numbness in hands/feet
-If you notice these signs, see a doctor for a check-up. Early detection helps manage diabetes better.*
-
----
+> Common symptoms of diabetes include:
+> 
+> - Increased thirst
+> - Frequent urination
+> - Extreme hunger
+> - Unexplained weight loss
+> - Fatigue
+> - Blurry vision
+> - Slow-healing cuts or infections
+> - Tingling or numbness in hands/feet
+> 
+> If you notice these signs, see a doctor for a check-up. Early detection helps manage diabetes better.
 
 ## 🛡️ Disclaimer
 
