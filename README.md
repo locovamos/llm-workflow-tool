@@ -8,7 +8,7 @@ This is a **lightweight AI-powered medical assistant** designed to provide conci
 ## ✨ Features
 
 - **Multi-Model Response Generation**: Uses Gemini and DeepSeek APIs to generate answers.
-- **Intelligent Judgement**: GPT-4 evaluates the responses and selects the best.
+- **Intelligent Judgement**: GPT-4o-mini evaluates the responses and selects the best.
 - **Patient-Friendly Answers**: Tailored for clear, simple, and helpful medical guidance.
 - **Topic & Summary Extraction**: Automatically extracts topic and summary for each response.
 - **Gradio Chat Interface**: Accessible web interface with dark mode enabled by default.
