@@ -74,7 +74,7 @@ Access the web interface at the URL shown in the terminal. Dark mode will load a
 1. **User inputs a medical question** in the chat interface.
 2. The system:
    - Uses **Gemini** and **DeepSeek** to generate responses.
-   - Passes both responses to **OpenAI GPT-4** for evaluation.
+   - Passes both responses to **OpenAI GPT-4o-mini** for evaluation.
    - Selects and returns the **best answer**.
    - Extracts the **topic** and **summary** using Gemini, and logs them.
 3. **Gradio** serves the web interface with dark mode enforced.
